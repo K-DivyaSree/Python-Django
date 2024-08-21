@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>{{ festival }} - {{ state }}</title>
+</head>
+<body>
+    <div class="container">
+        {% if wish %}
+            <h1 class="font-italic text-primary text-center" >{{ wish }}</h1>
+            <p class="text-dark text-center">Sent to you on {{ time }}. Have a great day!</p>
+        {% else %}
+            <h1 class="text-warning">State or festival not recognized.</h1>
+        {% endif %}
+    </div>
+</body>
+</html>
