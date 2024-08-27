@@ -29,6 +29,7 @@ def students(request):
     return render(request,'../Templates/home.html',context)
     
 
+
 def fun(request):
     if request.method=="POST":
         a=request.POST.get('n1')
@@ -49,3 +50,25 @@ def cars(request):
         result=CarItem.objects.all()[::-1]
         return render(request,'home.html',{'data':result})
     return render(request,'home.html')
+
+
+def movies(request):
+    result=MovItem.objects.all()[::-1]
+    if request.method=="POST":
+        nm=request.POST.get('mvnm')
+        yor=request.POST.get('yor')
+        dr=request.POST.get('mvdr')
+        obj=MovItem(name=nm,year=yor,dir=dr)
+        obj.save()
+        result=MovItem.objects.all()[::-1]
+        return render(request,'movies.html',{'data':result})
+    return render(request,'movies.html')
+
+def single(request,rid):
+    if MovItem.objects.filter(id=rid).exists():
+        obj=MovItem.objects.get(id=rid)
+        d={
+            'data':obj
+        }
+        return render(request,'single.html',d)
+    return render(request,'single.html')
